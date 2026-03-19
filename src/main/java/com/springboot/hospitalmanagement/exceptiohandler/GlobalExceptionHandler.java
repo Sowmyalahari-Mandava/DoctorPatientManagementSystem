@@ -60,6 +60,15 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(InvalidPatientIdException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidPatientIdException(InvalidPatientIdException invalidPatientIdException){
+        ErrorResponse error = new ErrorResponse(
+                invalidPatientIdException.getMessage(),
+                LocalDateTime.now()
+        );
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(NoResourceFoundException.class)
     public ResponseEntity<ErrorResponse> handleNoResourceFoundException(
             NoResourceFoundException ex) {

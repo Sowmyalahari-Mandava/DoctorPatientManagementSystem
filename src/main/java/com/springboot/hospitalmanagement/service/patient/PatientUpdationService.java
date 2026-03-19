@@ -11,8 +11,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class PatientUpdationService {
 
-    @Autowired
-    private PatientRepository patientRepository;
+    private final PatientRepository patientRepository;
+
+    public PatientUpdationService(PatientRepository patientRepository) {
+        this.patientRepository = patientRepository;
+    }
 
     public PatientResponse updatePatientDetails(Long id, PatientDto patientDetails){
         PatientEntity patient = patientRepository.findById(id)
@@ -28,7 +31,7 @@ public class PatientUpdationService {
             patient = patientRepository.save(patient);
 
         PatientResponse response = PatientResponse.builder()
-                    .id(patient.getId())
+                .patientId(patient.getPatientId())
                     .firstName(patient.getFirstName())
                     .lastName(patient.getLastName())
                     .build();

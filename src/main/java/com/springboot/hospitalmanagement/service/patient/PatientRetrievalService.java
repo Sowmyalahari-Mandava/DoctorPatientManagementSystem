@@ -13,8 +13,11 @@ import java.util.List;
 @Service
 public class PatientRetrievalService {
 
-    @Autowired
-    private PatientRepository patientRepository;
+    private final PatientRepository patientRepository;
+
+    public PatientRetrievalService(PatientRepository patientRepository) {
+        this.patientRepository = patientRepository;
+    }
 
     public List<PatientResponse> getAllPatients(){
 
@@ -24,7 +27,7 @@ public class PatientRetrievalService {
 
         for(PatientEntity patient : patients) {
             PatientResponse response = PatientResponse.builder()
-                    .id(patient.getId())
+                    .patientId(patient.getPatientId())
                     .firstName(patient.getFirstName())
                     .lastName(patient.getLastName())
                     .build();
@@ -41,7 +44,7 @@ public class PatientRetrievalService {
         PatientResponse response = null;
 
             response = PatientResponse.builder()
-                    .id(patient.getId())
+                    .patientId(patient.getPatientId())
                     .firstName(patient.getFirstName())
                     .lastName(patient.getLastName())
                     .build();

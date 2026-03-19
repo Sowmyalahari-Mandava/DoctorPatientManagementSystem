@@ -9,14 +9,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class PatientDeletionService {
 
-    @Autowired
-    private PatientRepository patientRepository;
+    private final PatientRepository patientRepository;
 
-    public void deletePatientById(Long id){
+    public PatientDeletionService(PatientRepository patientRepository) {
+        this.patientRepository = patientRepository;
+    }
 
-    PatientEntity patient = patientRepository.findById(id)
-            .orElseThrow(() -> new PatientNotFoundException("Patient is found with id "+id));
+    public void deletePatientById(Long patientId){
 
-        patientRepository.deleteById(id);
+    PatientEntity patient = patientRepository.findById(patientId)
+            .orElseThrow(() -> new PatientNotFoundException("Patient is found with patientId "+patientId));
+
+        patientRepository.deleteById(patientId);
     }
 }

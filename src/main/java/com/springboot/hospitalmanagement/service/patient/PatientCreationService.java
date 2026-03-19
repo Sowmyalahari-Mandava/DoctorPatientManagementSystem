@@ -18,7 +18,7 @@ public class PatientCreationService {
     public PatientResponse addPatient(PatientDto patientDto) {
 
         PatientEntity patient = PatientEntity.builder()
-                .id(patientDto.getId())
+                .patientId(patientDto.getPatientId())
                 .firstName(patientDto.getFirstName())
                 .lastName(patientDto.getLastName())
                 .build();
@@ -26,7 +26,7 @@ public class PatientCreationService {
         patient = patientRepository.save(patient);
 
         PatientResponse response = PatientResponse.builder()
-                .id(patient.getId())
+                .patientId(patient.getPatientId())
                 .firstName(patient.getFirstName())
                 .lastName(patient.getLastName())
                 .build();

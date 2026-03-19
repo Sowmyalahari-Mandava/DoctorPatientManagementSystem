@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class PatientResponse {
-    private Long id;
+    private Long patientId;
     private String firstName;
     private String lastName;
 

@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class PatientDto {
-    private Long id;
+    private Long patientId;
     private String firstName;
     private String lastName;
 

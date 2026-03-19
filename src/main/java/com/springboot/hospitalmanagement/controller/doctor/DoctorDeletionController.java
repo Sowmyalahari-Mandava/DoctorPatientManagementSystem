@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/*
+Controller class for deleting doctor
+ */
 @RestController
 @RequestMapping(ApiConstants.DOCTORS_API)
 public class DoctorDeletionController {
@@ -23,7 +26,9 @@ public class DoctorDeletionController {
         this.doctorValidation = doctorValidation;
         this.doctorDeletionService = doctorDeletionService;
     }
-
+    /*
+    Method for deleting doctor using doctorId using DELETE mapping
+     */
     @DeleteMapping(ApiConstants.DELETE_DOCTOR_BY_ID)
     public String removeDoctor(@PathVariable("doctorId") Long doctorId){
         doctorValidation.validateDoctorId(doctorId);

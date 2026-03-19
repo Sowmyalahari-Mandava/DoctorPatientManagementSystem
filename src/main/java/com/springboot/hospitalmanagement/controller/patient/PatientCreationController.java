@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/*
+Controller class to insert patient
+ */
 @RestController
 @RequestMapping(ApiConstants.PATIENTS_API)
 public class PatientCreationController {
@@ -25,6 +28,9 @@ public class PatientCreationController {
         this.patientCreationService = patientCreationService;
     }
 
+    /*
+    Method to insert patient using POST mapping
+     */
     @PostMapping(ApiConstants.INSERT_PATIENT)
     public PatientResponse createPatient(@RequestBody PatientDto patientDto){
         patientValidation.validatePatientDetails(patientDto);

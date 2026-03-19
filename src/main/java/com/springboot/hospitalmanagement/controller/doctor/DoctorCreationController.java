@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/*
+   Controller class to insert doctor
+*/
+
 @RestController
 @RequestMapping(ApiConstants.DOCTORS_API)
 public class DoctorCreationController {
@@ -24,7 +28,9 @@ public class DoctorCreationController {
         this.doctorValidation = doctorValidation;
         this.doctorCreationService = doctorCreationService;
     }
-
+    /*
+    Method to insert doctor using POST mapping
+     */
     @PostMapping(ApiConstants.INSERT_DOCTOR)
     public  DoctorResponse createDoctor(@RequestBody DoctorDto doctorDetails) {
         doctorValidation.validateDoctorDetails(doctorDetails);
